@@ -40,7 +40,7 @@
 
 ### 在线访问
 项目已通过 GitHub Pages 自动部署，可直接访问：
-👉 **[https://yankeesean.github.io/ACGN/](https://yankeesean.github.io/ACGN/ACGN/index.html)**
+👉 **[https://yankeesean.github.io/ACGN/ACGN/index.html](https://yankeesean.github.io/ACGN/ACGN/index.html)**
 
 ### 本地运行
 1.  **克隆项目**
