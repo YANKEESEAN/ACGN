@@ -1,0 +1,254 @@
+
+*{
+    /* 初始化 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    /* 100%窗口高度 */
+    min-height: 100vh;   
+    /* 渐变背景 */
+    background-color:#2f7dc887;
+}
+.box2{
+    margin: 50px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    animation-duration: 3s;
+    animation-name: moving;
+}
+@keyframes moving{
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+    to {
+        margin-left: 20%;
+        width: 50%;
+    }
+    75%{ 
+        width: 150%;
+        margin-left: 25%;
+        
+    }
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 20px 100px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    overflow: hidden;
+    border-bottom: double white 1px;
+    /*border-radius: 30px;*/
+    background-color: rgba(0, 0, 0, 0.5);
+
+
+}
+.nav-header{
+    display: flex;
+    flex-direction:row;
+}
+.navbar-brand{
+    font-family: '宋体';
+    font-size: 30px;
+    font-weight: bold;
+    height: 30px;
+    color: #fff;
+}
+
+.font-special{
+    font-family: '宋体'，'新宋体'，sans-serif;
+}
+.active{
+    background: #347ab6
+}
+header ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header ul li{
+    font-weight: 400px;
+    margin-left: 15px;
+    transition: all .5s linear;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+header ul li:hover{
+    background: #347ab6;
+    color: #2b1055;
+}
+a:link,a:visited{
+    color: #fff;
+    text-decoration: none;
+}
+.block-content{
+	position: relative;
+    height: 600px;
+	background-color:#4a60a400;
+    padding: auto;    
+}
+.block-content1{
+	position: relative;
+    height: 400px;
+	background-color:#4a60a400;
+    padding: auto;    
+}
+
+.block-content1 p {
+    margin: 25px 25px 25px 25px;
+}
+.block-content p {
+    margin: 25px 25px 25px 25px;
+}
+
+
+.info-content {
+    background-color: #427c8cc4;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
+    
+    
+   
+    
+}
+
+.text_communist {
+    color: white;
+    font-size: 40px;
+    margin-top: -20px;
+    position: relative;
+    top: -5px;
+	z-index:99;
+    font-family: '楷体';
+}
+
+.text_content {
+    color:#fff;
+    font-size:large;
+    line-height: 2;
+	z-index:99;
+    font-family: '华文中宋';
+}
+
+
+
+img.info-photo {
+  /*  width: ;*/
+   /* height: 90vh;*/
+    margin-left:1000px;
+	margin-top:160px;
+	position:absolute;
+	z-index:6;
+    
+}
+
+
+
+.box3 {
+    background-color:#427c8cc4;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: fit-content;
+    border-radius: 50px;
+    margin: auto;
+    
+    
+    
+    
+}
+
+
+.container{
+    /* 相对定位 */
+    position: relative;
+    /* 弹性布局 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 允许换行 */
+    flex-wrap: wrap;
+    padding: 30px;
+    background-color:#4a60a400;
+}
+.container .card{
+    position: relative;
+    max-width: 500px;
+    height: 215px;
+    background-color: #fff;
+    margin: 30px 15px;
+    padding: 20px 15px;
+    border-radius: 5px;
+    /* 阴影 */
+    box-shadow: 0 5px 200px rgba(0,0,0,0.5);
+    /* 动画过渡 */
+    transition: 0.3s ease-in-out;
+}
+.container .card:hover{
+    height: 600px;
+}
+.container .card .img-box{
+    position: relative;
+    width: 480px;
+    height: 260px;
+    border-radius: 5px;
+    /* 溢出隐藏 */
+    overflow: hidden;
+    top: -60px;
+    left: 20px;
+    /* 阴影 */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.container .card .img-box img{
+    width: 100%;
+}
+.container .card .text-box{
+    position: relative;
+    margin-top: -140px;
+    padding: 10px 15px;
+    text-align: center;
+
+    color: #111;
+    /* 设置元素不可见 */
+    visibility: hidden;
+    /* 不透明度 */
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+}
+.container .card .text-box p{
+    text-align: left;
+    line-height: 25px;
+    margin-top: 10px;
+    font-size: 15px;
+    color: #555;
+}
+.container .card:hover .text-box{
+    /* 鼠标移入，设置元素可见 */
+    visibility: visible;
+    opacity: 1;
+    margin-top: -40px;
+    /* 动画延迟0.2秒 */
+    transition-delay: 0.2s;
+}

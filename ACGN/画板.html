@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画板</title>
+    <style>
+        .e2 {
+            background-color: #a594e9;
+            color: #ffffff; /* 更改文本颜色为白色 */
+            padding: 12px 15px; /* 调整内边距 */
+            border-radius: 5px; /* 添加圆角 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 更强的阴影效果 */
+            position: absolute;
+            top: 10px; /* 调整位置 */
+            right: 10px; /* 调整位置 */
+            font: 18px '华文中宋';
+            letter-spacing: 0.5px; /* 轻微调整字间距 */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s; /* 添加过渡效果 */
+        }
+
+        .e2:active {
+            background-color: #bdbc9d;
+            transform: scale(0.95); /* 点击时缩小效果 */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-size: cover;
+            background-image: linear-gradient(30deg, rgba(89, 215, 171, 0.7), rgba(50, 200, 195, 0.9));
+        }
+
+        canvas {
+            border: 2px solid #333; /* 更深的边框颜色 */
+            margin-bottom: 20px;
+            background-color: #f9f9f9; /* 更亮的背景色 */
+            border-radius: 8px; /* 添加圆角 */
+        }
+
+        .controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .controls label {
+            font-size: 16px;
+            margin-right: 10px;
+            color: #333; /* 标签颜色 */
+        }
+
+        .controls input {
+            margin: 0 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc; /* 边框样式 */
+        }
+
+        .title {
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-family: "宋体", SimSun, sans-serif;
+            background: linear-gradient(to right, rgb(230, 255, 117), #7effdd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* 文字阴影 */
+        }
+
+        /* 弹窗样式 */
+        .modal {
+            display: none; /* 默认隐藏 */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 100px;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border: 2px solid #6c63ff; /* 边框颜色 */
+            border-radius: 15px; /* 添加圆角 */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* 添加阴影 */
+            width: 300px;
+            text-align: center;
+        }
+
+        /* 按钮样式 */
+        .modal-content button {
+            margin: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #6c63ff; /* 更改背景颜色 */
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .modal-content button:hover {
+            background-color: #5a54d1; /* 悬停时更深的颜色 */
+            transform: scale(1.05); /* 悬停时轻微放大 */
+        }
+
+        .modal-content button:active {
+            background-color: #4b4fd0; /* 点击时更深的颜色 */
+        }
+
+        button {
+            background-color: #6c63ff; /* 按钮背景色 */
+            color: #ffffff; /* 按钮文本颜色 */
+            padding: 5px 15px; /* 内边距 */
+            border: none; /* 去掉默认边框 */
+            border-radius: 5px; /* 圆角 */
+            font-size: 16px; /* 字体大小 */
+            cursor: pointer; /* 鼠标悬停时变为指针 */
+            transition: background-color 0.3s, transform 0.2s; /* 过渡效果 */
+            margin: 0 5px; /* 按钮间距 */
+        }
+
+        button:hover {
+            background-color: #5a54e0; /* 鼠标悬停时的背景色 */
+        }
+
+        button:active {
+            transform: scale(0.95); /* 点击时缩小效果 */
+        }
+
+        .back-button {
+            position: absolute;
+            top: 10px;
+            right: 70px;
+            background-color: #15f6d1bc;
+            color: white;
+            padding: 5px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #5c98e6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title">请开始创作你的同人作品吧！</div>
+    <canvas id="whiteboard" width="1300" height="570"></canvas>
+    <div class="controls">
+        <label for="color">颜色:</label>
+        <input type="color" id="color" value="#000000">
+        <label for="size">大小:</label>
+        <input type="range" id="size" min="1" max="20" value="2">
+        <button id="clearBtn">清屏</button>
+        <button id="saveBtn">保存</button>
+        <button id="outlineBtn">轮廓</button>
+        <button id="backBtn" class="back-button">返回简介</button>
+    </div>
+
+    <!-- 轮廓选择弹窗 -->
+    <div id="outlineModal" class="modal">
+        <div class="modal-content">
+            <h2>选择轮廓</h2>
+            <button id="outline1">罗小黑战记</button>
+            <button id="outline2">千与千寻</button>
+            <button id="outline3">刺客伍六七</button>
+            <button id="outline4">逆转裁判</button>
+            <button id="outline5">凉宫春日的忧郁</button>
+            <button id="outline6">龙王的工作</button>
+            <button id="outline7">你的名字</button>
+            <button id="closeModal">关闭</button>
+        </div>
+    </div>
+
+    <!-- 轮廓选择确认弹窗 -->
+    <div id="selectionModal" class="modal">
+        <div class="modal-content">
+            <h2 id="selectionTitle"></h2>
+            <button id="selectOutline1">轮廓一</button>
+            <button id="selectOutline2">轮廓二</button>
+            <button id="selectOutline3">轮廓三</button>
+            <button id="closeSelectionModal">关闭</button>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('whiteboard');
+        const ctx = canvas.getContext('2d');
+        const canvasWidth = canvas.width;
+        const canvasHeight = canvas.height;
+        let drawing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        // 角色轮廓的图像列表
+        const outlines = [];
+        const outlineImageURLs = [
+            './images/12.1.jpg', // 罗小黑战记
+            './images/12.16.jpg' , // 罗小黑战记
+            './images/12.17.jpg' , // 罗小黑战记
+            './images/12.4.jpg', // 千与千寻
+            './images/12.22.jpg', // 千与千寻
+            './images/12.24.jpg', // 千与千寻
+            './images/12.7.jpg', // 刺客伍六七
+            './images/12.25.jpg', // 刺客伍六七
+            './images/12.26.jpg', // 刺客伍六七
+            './images/12.6.jpg', // 逆转裁判
+            './images/12.20.jpg', // 逆转裁判
+            './images/12.21.jpg', // 逆转裁判
+            './images/12.8.jpg', // 凉宫春日的忧郁
+            './images/12.9.jpg', // 凉宫春日的忧郁
+            './images/12.10.jpg', // 凉宫春日的忧郁
+            './images/12.15.jpg', // 龙王的工作
+            './images/12.27.jpg', // 龙王的工作
+            './images/12.29.jpg', // 龙王的工作
+            './images/12.3.jpg' , // 你的名字
+            './images/12.18.jpg' , // 你的名字
+            './images/12.19.jpg' // 你的名字
+        ];
+
+        // 加载轮廓图像
+        outlineImageURLs.forEach(url => {
+            const img = new Image();
+            img.src = url;
+            outlines.push(img);
+        });
+
+        // 绘制线条
+        canvas.addEventListener('mousedown', (e) => {
+            drawing = true;
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (drawing) {
+                ctx.beginPath();
+                ctx.moveTo(lastX, lastY);
+                ctx.lineTo(e.offsetX, e.offsetY);
+                ctx.strokeStyle = document.getElementById('color').value;
+                ctx.lineWidth = document.getElementById('size').value;
+                ctx.lineCap = 'round';
+                ctx.stroke();
+                [lastX, lastY] = [e.offsetX, e.offsetY];
+            }
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            drawing = false;
+        });
+
+        canvas.addEventListener('mouseout', () => {
+            drawing = false;
+        });
+
+        // 清屏功能
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+
+        // 保存功能
+        document.getElementById('saveBtn').addEventListener('click', () => {
+            var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+            var link = document.createElement('a');
+            link.download = 'whiteboard.png';
+            link.href = image;
+            link.click();
+        });
+
+        document.getElementById('backBtn').addEventListener('click', () => {
+            window.location.href = 'HomePage.html';
+        });
+
+        // 显示轮廓选择弹窗
+        document.getElementById('outlineBtn').addEventListener('click', () => {
+            document.getElementById('outlineModal').style.display = 'block';
+        });
+
+        // 关闭轮廓选择弹窗
+        document.getElementById('closeModal').addEventListener('click', () => {
+            document.getElementById('outlineModal').style.display = 'none';
+        });
+
+        // 显示轮廓选择确认弹窗
+        function showOutlineSelection(outlineName) {
+            document.getElementById('selectionTitle').innerText = `选择 ${outlineName}`;
+            document.getElementById('selectionModal').style.display = 'block';
+        }
+
+        // 选择轮廓并绘制
+        document.getElementById('outline1').addEventListener('click', () => {
+            showOutlineSelection('罗小黑战记');
+            document.getElementById('selectOutline1').onclick = () => {
+                ctx.drawImage(outlines[0], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+            document.getElementById('selectOutline2').onclick = () => {
+                ctx.drawImage(outlines[1], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+            document.getElementById('selectOutline3').onclick = () => {
+                ctx.drawImage(outlines[2], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+        });
+
+        document.getElementById('outline2').addEventListener('click', () => {
+            showOutlineSelection('千与千寻');
+            document.getElementById('selectOutline1').onclick = () => {
+                ctx.drawImage(outlines[3], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+            document.getElementById('selectOutline2').onclick = () => {
+                ctx.drawImage(outlines[4], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+            document.getElementById('selectOutline3').onclick = () => {
+                ctx.drawImage(outlines[5], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+        });
+
+        document.getElementById('outline3').addEventListener('click', () => {
+            showOutlineSelection('刺客伍六七');
+            document.getElementById('selectOutline1').onclick = () => {
+                ctx.drawImage(outlines[6], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+            document.getElementById('selectOutline2').onclick = () => {
+                ctx.drawImage(outlines[7], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+            document.getElementById('selectOutline3').onclick = () => {
+                ctx.drawImage(outlines[8], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+        });
+
+        document.getElementById('outline4').addEventListener('click', () => {
+            showOutlineSelection('逆转裁判');
+            document.getElementById('selectOutline1').onclick = () => {
+                ctx.drawImage(outlines[9], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+            document.getElementById('selectOutline2').onclick = () => {
+                ctx.drawImage(outlines[10], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+            document.getElementById('selectOutline3').onclick = () => {
+                ctx.drawImage(outlines[11], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+        });
+
+        document.getElementById('outline5').addEventListener('click', () => {
+            showOutlineSelection('凉宫春日的忧郁');
+            document.getElementById('selectOutline1').onclick = () => {
+                ctx.drawImage(outlines[12], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+            document.getElementById('selectOutline2').onclick = () => {
+                ctx.drawImage(outlines[13], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+            document.getElementById('selectOutline3').onclick = () => {
+                ctx.drawImage(outlines[14], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+        });
+
+        document.getElementById('outline6').addEventListener('click', () => {
+            showOutlineSelection('龙王的工作');
+            document.getElementById('selectOutline1').onclick = () => {
+                ctx.drawImage(outlines[15], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+            document.getElementById('selectOutline2').onclick = () => {
+                ctx.drawImage(outlines[16], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+            document.getElementById('selectOutline3').onclick = () => {
+                ctx.drawImage(outlines[17], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+        });
+
+        document.getElementById('outline7').addEventListener('click', () => {
+            showOutlineSelection('你的名字');
+            document.getElementById('selectOutline1').onclick = () => {
+                ctx.drawImage(outlines[18], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+            document.getElementById('selectOutline2').onclick = () => {
+                ctx.drawImage(outlines[19], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+            document.getElementById('selectOutline3').onclick = () => {
+                ctx.drawImage(outlines[20], 0, 0, canvasWidth, canvasHeight); // 调整大小
+                document.getElementById('selectionModal').style.display = 'none'; // 关闭确认弹窗
+                document.getElementById('outlineModal').style.display = 'none';
+            };
+        });
+
+        // 关闭选择确认弹窗
+        document.getElementById('closeSelectionModal').addEventListener('click', () => {
+            document.getElementById('selectionModal').style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>

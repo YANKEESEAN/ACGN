@@ -1,0 +1,595 @@
+* {
+    /* 初始化 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* 100%窗口高度 */
+    min-height: 100vh;
+    /* 渐变背景 */
+    background: linear-gradient(200deg, #5912dc8f, #d7f1fe);
+}
+
+body.luoxiaohei {
+    /* 100%窗口高度 */
+    min-height: 100vh;
+    /* 渐变背景 */
+    background: linear-gradient(200deg, #0e6b08, #fef9d7);
+}
+
+body.yourname {
+    min-height: 100vh;
+
+    background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
+}
+
+body.marchlion {
+    min-height: 100vh;
+
+    background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
+}
+
+
+body.april {
+    min-height: 100vh;
+
+    background-image: linear-gradient(to right, #92fe9d 0%, #00c9ff 100%);
+}
+
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 20px 100px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    overflow: hidden;
+    border-bottom: double white 1px;
+    /*border-radius: 30px;*/
+    background-color: rgba(0, 0, 0, 0.5);
+
+
+}
+
+.nav-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-brand {
+    font-family: '宋体';
+    font-size: 30px;
+    font-weight: bold;
+    height: 30px;
+    color: #fff;
+}
+
+.font-special {
+    font-family: '宋体', '新宋体', sans-serif;
+}
+
+.active {
+    background: #734eca
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li {
+    font-weight: 400px;
+    margin-left: 15px;
+    transition: all .5s linear;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+header ul li:hover {
+    background: #734eca;
+    color: #2b1055;
+}
+
+a:link,
+a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.box1 {
+    margin: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 100px;
+}
+
+
+.section {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /* 开启3D效果 */
+    transform-style: preserve-3d;
+
+
+
+
+}
+
+
+.card {
+    /* 相对定位 */
+    position: relative;
+    width: 320px;
+    height: 320px;
+    margin-top: 100px;
+    margin-left: 20px;
+    margin-bottom: 100px;
+    /* 开启3D效果 */
+    transform-style: preserve-3d;
+    /* 视距 */
+    perspective: 1000px;
+}
+
+.card .box {
+    /* 绝对定位 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    /* 设置过渡 */
+    transition: 1s ease;
+}
+
+.card .box .img-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card .box .img-box img {
+    width: 100%;
+    height: 100%;
+    /* 保持原有的尺寸比例，裁切长边 */
+    object-fit: cover;
+}
+
+.card .box .con-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 隐藏旋转div元素的背面 */
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    /* 默认沿Y轴旋转180度（在背面） */
+    transform: rotateY(180deg);
+}
+
+.card .box .con-box div {
+    color: #fff;
+    padding: 20px;
+    /* 渐变背景 */
+    background: linear-gradient(30deg, #96fbc4, #f9f586);
+    /* 默认沿Z轴偏移100px */
+    transform: translateZ(100px);
+}
+
+.card .box .con-box div h2 {
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-family: '宋体';
+    color: #000;
+}
+
+.card .box .con-box div p {
+    font-size: 15px;
+    text-align: justify;
+    margin-top: 5px;
+    font-family: '宋体';
+    color: #000;
+}
+
+.card:hover .box {
+    /* 鼠标移入，盒子旋转180度 */
+    transform: rotateY(180deg);
+}
+
+
+
+.card1 {
+    /* 相对定位 */
+    position: relative;
+    width: 500px;
+    height: 400px;
+    margin-top: 100px;
+    margin-left: 20px;
+    /* 开启3D效果 */
+    transform-style: preserve-3d;
+    /* 视距 */
+    perspective: 1000px;
+    margin-bottom: 100px;
+}
+
+.card1 .box {
+    /* 绝对定位 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    /* 设置过渡 */
+    transition: 1s ease;
+}
+
+.card1 .box .img-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.card1 .box .img-box img {
+    width: 100%;
+    height: 100%;
+    /* 保持原有的尺寸比例，裁切长边 */
+    object-fit: cover;
+}
+
+.card1 .box .con-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 隐藏旋转div元素的背面 */
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    /* 默认沿Y轴旋转180度（在背面） */
+    transform: rotateY(180deg);
+}
+
+.card1 .box .con-box div {
+    color: #fff;
+    padding: 20px;
+    /* 渐变背景 */
+    background: linear-gradient(30deg, #96fbc4, #f9f586);
+    /* 默认沿Z轴偏移100px */
+    transform: translateZ(100px);
+}
+
+.card1 .box .con-box div h2 {
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-family: '宋体';
+    color: #000;
+}
+
+.card1 .box .con-box div p {
+    font-size: 15px;
+    text-align: justify;
+    margin-top: 5px;
+    font-family: '宋体';
+    color: #000;
+
+}
+
+.card1:hover .box {
+    /* 鼠标移入，盒子旋转180度 */
+    transform: rotateY(180deg);
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 60%;
+    padding: 20px 20px;
+    background: linear-gradient(200deg, #fff1eb, #9e3fc1);
+    margin: auto;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    border-radius: 20px;
+}
+
+.box5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 60%;
+    padding: 20px 20px;
+    background: linear-gradient(200deg, #fff1eb, #307ec2);
+    margin: auto;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    border-radius: 20px;
+}
+
+p1 {
+    font-family: '华文中宋';
+    font-weight: 300;
+    line-height: 30px;
+    font-size: large;
+    animation-duration: 3s;
+    animation-name: slidein;
+
+}
+
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 50%;
+    }
+
+    75% {
+        font-size: x-large;
+        margin-left: 25%;
+        width: 150%;
+    }
+}
+
+.box2 {
+    margin: 50px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    animation-duration: 3s;
+    animation-name: moving;
+}
+
+@keyframes moving {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 50%;
+    }
+
+    75% {
+        width: 150%;
+        margin-left: 25%;
+
+    }
+}
+
+
+.block-content {
+    position: relative;
+    height: 200px;
+    background-color: #000;
+}
+
+
+.block-content p {
+    margin: 25px 25px 25px 25px;
+}
+
+.text_communist {
+    color: white;
+    font-size: 40px;
+    margin-top: -20px;
+    position: relative;
+    top: -5px;
+    z-index: 99;
+    font-family: '宋体';
+}
+
+.text_content {
+    color: #fff;
+    font-size: large;
+    line-height: 2;
+    z-index: 99;
+    font-family: '宋体';
+}
+
+p.line {
+    background-color: white;
+    height: 3px;
+    margin: 0 25px;
+    position: relative;
+    top: -5%;
+    width: 53%;
+}
+
+img.info-photo {
+    /*  width: ;*/
+    /* height: 90vh;*/
+    margin-left: 1000px;
+    margin-top: 160px;
+    position: absolute;
+    z-index: 6;
+
+}
+
+.block-content {
+    position: relative;
+    height: 580px;
+    background-color: #000;
+
+}
+
+.info-content {
+    background-color: #734eca;
+    margin: 30vh 15vh;
+    /*display: none*/
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+
+    flex-wrap: wrap;
+}
+
+
+
+
+
+.swipe {
+    /* 相对定位 */
+    position: relative;
+    width: 100%;
+    /* 溢出隐藏 */
+    overflow: hidden;
+    margin: auto;
+    margin-top: 100px;
+
+}
+
+/* 模糊背景 */
+.swipe .bg {
+    /* 绝对定位 */
+    position: absolute;
+    width: 500%;
+    height: 100%;
+    z-index: 1;
+    background-image: url("../images/cloud_music/1.jpg");
+    background-size: 6000px;
+    background-position: center center;
+    /* 模糊滤镜 */
+    filter: blur(140px);
+}
+
+/* 图片区域 */
+.swipe section {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1500px;
+    height: 700px;
+    /* 居中 */
+    margin: 0 auto;
+}
+
+/* 图片盒子 */
+.swipe .img-box {
+    width: 100%;
+    height: 100%;
+}
+
+/* 图片 */
+.swipe .img-box .img {
+    width: 100%;
+    height: 100%;
+    /* 保持原有尺寸比例, 裁切长边 */
+    object-fit: cover;
+}
+
+/* 指示器 */
+.swipe .select {
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    bottom: 20px;
+    text-align: center;
+}
+
+.swipe .select .item {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 0 10px;
+    /* 阴影 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* 鼠标移入指示器 */
+.swipe .select .item:hover {
+    background-color: #ff4400;
+}
+
+/* 指示器选中状态 */
+.swipe .select .item.checked {
+    background-color: #ff4400;
+}
+
+/* 两侧翻页按钮 */
+.swipe .btn {
+    width: 40px;
+    height: 100px;
+    color: #fff;
+    /* 绝对定位 垂直居中 */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 50px;
+    background-color: rgba(0, 0, 0, 0.05);
+    /* 弹性布局 居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    /* 鼠标移入光标变小手 */
+    cursor: pointer;
+    /* 动画过渡 */
+    transition: 0.3s;
+}
+
+.swipe .btn.left {
+    left: -60px;
+}
+
+.swipe .btn.right {
+    right: -60px;
+}
+
+.swipe .btn:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* 响应式 屏幕尺寸小于1620px时以下代码生效(让两个按钮移动到图片主体内部) */
+@media screen and (max-width:1620px) {
+    .swipe .btn.left {
+        left: 20px;
+    }
+
+    .swipe .btn.right {
+        right: 20px;
+    }
+}

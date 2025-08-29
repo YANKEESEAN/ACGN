@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 200vh;
+            overflow-x: hidden;
+        }
+
+        .background {
+            background-image: url("./images/11.jpg");
+            background-size: cover;
+            background-position: 50% 50%;
+            height: 200vh;
+            font: 800 29rem '';
+            line-height: 130vh;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .background::before {
+            content: '';
+            background-size: cover;
+            background-image: inherit;
+            background-position: 50% 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: -99;
+        }
+
+        h1 {
+            position: absolute;
+            font-family: 'Eras Demi ITC';
+            text-align: center;
+            font-size: 40px;
+            width: 100%;
+            letter-spacing: 5px;
+            color: #f7b4ea;
+        }
+
+        h2 {
+            position: absolute;
+            font-family: 'Eras Demi ITC';
+            letter-spacing: 2px;
+            top: 120vh;
+            width: 60%;
+            color: #fff;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 30px;
+            background-color: rgba(0, 0, 0, .3);
+        }
+
+        .explore-btn {
+            position: absolute;
+            top: 185vh;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 20px 40px;
+            font-size: 20px;
+            color: #000;
+            background-color: #fff;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-family: sans-serif;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .explore-btn:hover {
+            background-color: #f7b4ea;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1><strong>Animation  Comic  Game  Novel</strong></h1>
+    <div class="background"><span>ACGN</span></div>
+    <h2>
+        ACGN一词源于20世纪90年代中后期始于台湾的ACG一词，ACGN文化根源主要来自日本。
+        
+        最初在20世纪90年代的台湾校园网络中流行着大量动画、漫画、游戏作品，这些作品主要产自日本。
+        
+        随着时代的发展，这些华语圈青少年中流行的不再仅仅是ACG，作为产业链上游的以小说为代表的文字作品开始受到更多的关注，从而形成了一个新的领域划分——ACGN。它是英文Animation（动画）、Comic（漫画）、Game（游戏）、Novel（小说）的合并缩写。
+        
+        ACGN文化圈出现的背后是动画、漫画、游戏、小说这几种作品形式的在产业链上的紧密关联。首先出现的是共同的目标受众，之后是关联的改编创作，最终在受众中形成了相对稳固的文化圈。
+    </h2>
+    <a href="index.html">
+    <button class="explore-btn">Explore  more...</button>
+    </a>
+
+
+
+    <script>
+        const background = document.querySelector(".background")
+
+        document.addEventListener('scroll', () => {
+            const scrollY = window.scrollY
+
+            if (scrollY !== 0) {
+                background.style.backgroundPosition = `calc(50% + ${scrollY}px) calc(50% + ${scrollY}px)`
+            }else{
+                background.style.backgroundPosition = ''
+            }
+        })
+    </script>
+</body>
+
+</html>

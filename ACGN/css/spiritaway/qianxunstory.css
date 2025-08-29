@@ -1,0 +1,259 @@
+* {
+    /* 初始化 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* 100%窗口高度 */
+    min-height: 100vh;
+    /* 渐变背景 */
+    background:linear-gradient(200deg,#d44747,#fef9d7);
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    align-items: center;
+
+}
+
+
+
+
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 20px 100px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    overflow: hidden;
+    border-bottom: double white 1px;
+    /*border-radius: 30px;*/
+    background-color: rgba(0, 0, 0, 0.5);
+
+
+}
+
+.nav-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-brand {
+    font-family: '宋体';
+    font-size: 30px;
+    font-weight: bold;
+    height: 30px;
+    color: #fff;
+}
+
+.font-special {
+    font-family: '宋体' ，'新宋体' ，sans-serif;
+}
+
+.active {
+    background: #497271
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li {
+    font-weight: 400px;
+    margin-left: 15px;
+    transition: all .5s linear;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+header ul li:hover {
+    background: #497271;
+    color: #2b1055;
+}
+
+a:link,
+a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+
+.container {
+    width: 600px;
+    height: 400px;
+
+    perspective: 1000px;
+    position: relative;
+}
+
+.cards-wrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
+    transform: rotateY(0) translateZ(-700px);
+    animation: carousel 10s infinite cubic-bezier(0.77, 0, 0.175, 1);
+
+}
+
+
+.cards-wrap:hover {
+    animation-play-state: paused;
+}
+
+.cards {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards:nth-child(1) {
+
+    transform: rotateY(0) translateZ(700px);
+}
+
+.cards:nth-child(2) {
+
+    transform: rotateY(72deg) translateZ(700px);
+}
+
+.cards:nth-child(3) {
+
+    transform: rotateY(144deg) translateZ(700px);
+
+}
+
+.cards:nth-child(4) {
+
+    transform: rotateY(216deg) translateZ(700px);
+
+}
+
+.cards:nth-child(5) {
+
+    transform: rotateY(288deg) translateZ(700px);
+
+}
+
+@keyframes carousel {
+    0% {
+        transform: translateZ(-700px) rotateY(0);
+    }
+
+    20% {
+        transform: translateZ(-700px) rotateY(-72deg);
+    }
+
+    40% {
+        transform: translateZ(-700px) rotateY(-144deg);
+    }
+
+    60% {
+        transform: translateZ(-700px) rotateY(-216deg);
+    }
+
+    80% {
+        transform: translateZ(-700px) rotateY(-288deg);
+    }
+
+    100% {
+        transform: translateZ(-700px) rotateY(-360deg);
+    }
+}
+
+
+
+.container .card {
+    position: relative;
+    max-width: 600px;
+    height: 300px;
+    background-color: #fff;
+    margin: 30px 15px;
+    padding: 20px 15px;
+    border-radius: 5px;
+    /* 阴影 */
+    box-shadow: 0 5px 200px rgba(0, 0, 0, 0.5);
+    /* 动画过渡 */
+    transition: 0.3s ease-in-out;
+}
+
+.container .card:hover {
+    height: 600px;
+}
+
+.container .card .img-box {
+    position: relative;
+    width: 550px;
+    height: 300px;
+    border-radius: 5px;
+    /* 溢出隐藏 */
+    overflow: hidden;
+    top: -60px;
+    left: 20px;
+    /* 阴影 */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.container .card .img-box img {
+    width: 100%;
+}
+
+.container .card .text-box {
+    position: relative;
+    margin-top: -140px;
+    padding: 10px 15px;
+    text-align: center;
+
+    color: #111;
+    /* 设置元素不可见 */
+    visibility: hidden;
+    /* 不透明度 */
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+}
+
+.container .card .text-box p {
+    text-align: left;
+    line-height: 25px;
+    margin-top: 10px;
+    font-size: 15px;
+    color: #555;
+}
+
+.container .card:hover .text-box {
+    /* 鼠标移入，设置元素可见 */
+    visibility: visible;
+    opacity: 1;
+    margin-top: -40px;
+    /* 动画延迟0.2秒 */
+    transition-delay: 0.2s;
+}
+
+p {
+    font-family: '宋体';
+    font-size: larger;
+    font-weight: bold;
+}

@@ -1,0 +1,188 @@
+* {
+    /* 初始化 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* 100%窗口高度 */
+    min-height: 100vh;
+    /* 渐变背景 */
+    background-image: linear-gradient(200deg, #e184c2, #d7f1fe);
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 20px 100px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    overflow: hidden;
+    border-bottom: double white 1px;
+    /*border-radius: 30px;*/
+    background-color: rgba(0, 0, 0, 0.5);
+
+
+}
+
+.nav-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-brand {
+    font-family: '宋体';
+    font-size: 30px;
+    font-weight: bold;
+    height: 30px;
+    color: #fff;
+}
+
+.font-special {
+    font-family: '宋体' ，'新宋体' ，sans-serif;
+}
+
+.active {
+    background: #cf46b5
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li {
+    font-weight: 400px;
+    margin-left: 15px;
+    transition: all .5s linear;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+header ul li:hover {
+    background: #cf46b5;
+    color: #2b1055;
+}
+
+a:link,
+a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+.zg {
+    width: 80%;
+
+
+    display: flex;
+
+
+    align-items: center;
+    flex-wrap: wrap;
+    margin: auto;
+
+}
+
+.one {
+    width: 100%;
+    height: 225px;
+    /* background-color: rgb(212,242,123); */
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+
+
+
+}
+
+.a {
+    width: fit-content;
+    height: 200px;
+    background-color: royalblue;
+}
+
+.a img {
+    width: fit-content;
+    height: 200px;
+    ;
+}
+
+.b {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 40%;
+    height: 200px;
+    background-color: #fff;
+    color: black;
+
+    font-size: large;
+    font-family: '宋体';
+    font-weight: bold;
+    /* padding-top: 70px;
+    padding-left: 30px; */
+    text-align: center;
+}
+
+.c img {
+    width: fit-content;
+    height: 200px;
+}
+
+p1 {
+
+    animation-duration: 3s;
+    animation-name: slideinleft;
+
+}
+
+@keyframes slideinleft {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-left: 0%;
+
+    }
+
+}
+
+p2 {
+
+    animation-duration: 3s;
+    animation-name: slideinright;
+
+}
+
+@keyframes slideinright {
+    from {
+        margin-right: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-right: 0%;
+
+    }
+
+}

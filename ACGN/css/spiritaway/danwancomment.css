@@ -1,0 +1,132 @@
+* {
+    /* 初始化 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* 100%窗口高度 */
+    min-height: 100vh;
+    /* 渐变背景 */
+    background: linear-gradient(200deg, #c07f34, #fef9d7);
+}
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 20px 100px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    overflow: hidden;
+    border-bottom: double white 1px;
+    /*border-radius: 30px;*/
+    background-color: rgba(0, 0, 0, 0.5);
+
+
+}
+
+.nav-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-brand {
+    font-family: '宋体';
+    font-size: 30px;
+    font-weight: bold;
+    height: 30px;
+    color: #fff;
+}
+
+.font-special {
+    font-family: '宋体' ，'新宋体' ，sans-serif;
+}
+
+.active {
+    background: #ca8d4e
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li {
+    font-weight: 400px;
+    margin-left: 15px;
+    transition: all .5s linear;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+header ul li:hover {
+    background: #ca8d4e;
+    color: #2b1055;
+}
+
+a:link,
+a:visited {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.music {
+    position: relative;
+    margin-left: 80%;
+    margin-top: 75px;
+
+}
+
+
+
+.box1 {
+
+    border-radius: 30px;
+    padding: auto;
+    margin: 200px 270px;
+    width: 70%;
+    height: fit-content;
+    line-height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-family: '宋体';
+    font-weight: bold;
+    font-size: large;
+    color: #fff;
+    background-color: #865719b3;
+    padding: 20px 20px;
+}
+
+p1 {
+
+    animation-duration: 3s;
+    animation-name: slidein;
+
+}
+
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 300%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 200%;
+    }
+
+}
