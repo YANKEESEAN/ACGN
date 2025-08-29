@@ -1,3 +1,169 @@
+# ACGN Creative Paradise 🎮📚🎬🎨
+
+A comprehensive ACGN (Animation, Comic, Game, Novel) culture-themed web project that combines display, interaction, and experience.
+
+[![GitHub Pages Deployment](https://img.shields.io/badge/GitHub-Pages-brightgreen?style=for-the-badge&logo=github)](https://yankeesean.github.io/ACGN/)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+## ✨ Project Features
+
+- **Immersive Visual Experience**: Utilizes parallax scrolling, dynamic text, card flipping effects, and more to create a dreamy ACGN atmosphere.
+- **Comprehensive Content Coverage**: In-depth introduction to 8 classic works spanning animation, comics, games, and novels.
+- **Rich Interactive Features**: Includes drawing board, BGM playback, character card flipping, and work collection navigation.
+- **Responsive Design**: Adapts to different device screens for optimal browsing experience.
+
+## 🗺️ Website Structure
+
+### Main Pages
+| Page Name | File Path | Description |
+| :--- | :--- | :--- |
+| **Culture Homepage** | `FirstPage.html` | ACGN letter parallax effects, cultural origins introduction, exploration guidance |
+| **Main Gallery** | `index.html` | Accordion-style work navigation, eight section entries |
+| **Character Pages** | `xxx.html` (e.g., `spiritedaway.html`) | Character card flip effects with role introductions |
+| **Story Introduction** | `xxxStory.html` | Text slide-in animations, work story summaries |
+| **Author Introduction** | `xxxAuthor.html` | Author positioning animations, achievements and work collections |
+| **Review Pages** | `xxxComment.html` | Dynamic review displays, BGM background music playback |
+| **Classic Lines** | `xxxLines.html` | Dynamic line arrangement and carousel card displays |
+| **Culture Home** | `HomePage.html` | Parallax scrolling effects, ACGN history and development |
+| **Work Gallery** | `ACGN主要代表作品.html` | Card-style work display with scroll effects |
+| **Creative Drawing Board** | `画板.html` | Online drawing tool with outline selection and save functionality |
+
+### Featured Works
+1. **Animation**: 《Spirited Away》, 《Your Name》
+2. **Comics**: 《罗小黑战记》(Luo Xiao Hei), 《刺客伍六七》(Assassin Seven)
+3. **Games**: 《Ace Attorney》, 《Danganronpa》
+4. **Novels**: 《The Melancholy of Haruhi Suzumiya》, 《Ryuuou no Oshigoto!》
+
+## 🚀 Quick Start
+
+### Online Access
+Automatically deployed via GitHub Pages:
+👉 **[https://yankeesean.github.io/ACGN/ACGN/index.html](https://yankeesean.github.io/ACGN/ACGN/index.html)**
+
+### Local Development
+1. **Clone the project**
+    ```bash
+    git clone https://github.com/YANKEESEAN/ACGN.git
+    cd ACGN/ACGN  # Navigate to the ACGN folder
+    ```
+
+2. **Start local server** (Recommended: Live Server)
+    - Install Live Server extension in VS Code
+    - Right-click on `FirstPage.html` or `index.html`
+    - Select "Open with Live Server"
+
+3. **Direct browser access**
+    - Double-click any HTML file to open in your browser
+
+## 🛠️ Technology Stack
+
+- **Frontend Foundation**: HTML5, CSS3, JavaScript (ES6+)
+- **Layout Techniques**: Flexbox, Grid, Responsive Design
+- **Animation Effects**: CSS Animation, CSS Transition, JavaScript Animations
+- **Interactive Features**: Native JavaScript DOM manipulation, Event handling
+- **Audio Processing**: HTML5 Audio API
+
+## 📁 Project Structure
+
+```
+ACGN/
+├── ACGN/                    # Main website content (GitHub Pages source)
+│   ├── FirstPage.html       # Culture homepage - entry point
+│   ├── index.html          # Main gallery - work navigation center
+│   ├── HomePage.html       # Culture home - ACGN development history
+│   ├── 画板.html           # Creative drawing board
+│   ├── spiritedaway/       # Spirited Away series pages
+│   ├── yourname/           # Your Name series pages
+│   └── ...other work directories
+├── .gitattributes          # Git LFS configuration
+├── README.md              # Project documentation (English)
+├── README                 # Documentation (Chinese)
+├── 网页简介.docx           # Project introduction (Chinese)
+├── 网页详细介绍.docx        # Detailed documentation (Chinese)
+└── ACGN创想乐园.pdf        # Presentation slides
+```
+
+## 🎨 Core Features
+
+### Visual Effects
+- ✅ Parallax scrolling effects
+- ✅ Card flip animations
+- ✅ Text slide-in特效
+- ✅ Image positioning animations
+- ✅ Accordion-style navigation
+
+### Interactive Features
+- ✅ Mouse hover effects
+- ✅ Click navigation
+- ✅ Drawing board tool
+- ✅ BGM music playback
+- ✅ Work outline selection
+
+### Content Display
+- ✅ Multi-work categorization
+- ✅ Character introductions
+- ✅ Story summaries
+- ✅ Author achievements
+- ✅ User review carousels
+- ✅ Classic line displays
+
+## 📝 Documentation
+
+For detailed design specifications, implementation principles, and effect demonstrations:
+- **[网页详细介绍.docx](./网页详细介绍.docx)** - Complete design documentation (Chinese)
+- **[网页简介.docx](./网页简介.docx)** - Project introduction (Chinese)
+
+## 🤝 Contributing
+
+Welcome to submit Issues and Pull Requests to improve this project!
+
+1.  Fork the project
+2.  Create feature branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to branch (`git push origin feature/AmazingFeature`)
+5.  Open Pull Request
+
+## 📄 License
+
+This project is for learning and communication purposes only. All ACGN works involved are copyright of their original authors and related companies.
+
+- Project code: MIT License
+- Resource files (images, audio, etc.): Educational use only
+
+## 👥 Author
+
+**YANKEESEAN**
+- GitHub: [@YANKEESEAN](https://github.com/YANKEESEAN)
+- Project Link: [https://github.com/YANKEESEAN/ACGN](https://github.com/YANKEESEAN/ACGN)
+
+---
+
+**Explore the infinite possibilities of ACGN and start your journey into the 2D world!** 🚀
+
+## 🌐 Access Notes
+
+- **Main Entry Point**: [https://yankeesean.github.io/ACGN/](https://yankeesean.github.io/ACGN/)
+- **Direct Page Access**: Append specific HTML filename to the URL
+- **Best Experience**: Use modern browsers with JavaScript enabled
+
+---
+
+### How to Use This README:
+
+1.  Create a new file named `README.md` in your project root directory
+2.  Copy and paste all content above
+3.  Save the file and add to repository:
+    ```bash
+    git add README.md
+    git commit -m "Add English documentation"
+    git push origin main
+    ```
+
+This will provide international visitors with a comprehensive understanding of your ACGN project! 🌍
+
+
 # ACGN 创想乐园 🎮📚🎬🎨
 
 一个集展示、互动与体验于一体的综合性 ACGN（动画、漫画、游戏、小说）文化主题网页项目。
@@ -150,6 +316,7 @@ ACGN/
 
 ## 👥 作者
 
+**YANKEESEAN**
 - GitHub: [@YANKEESEAN](https://github.com/YANKEESEAN)
 - 项目链接: [https://github.com/YANKEESEAN/ACGN](https://github.com/YANKEESEAN/ACGN)
 
